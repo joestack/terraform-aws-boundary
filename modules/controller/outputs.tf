@@ -24,5 +24,5 @@ output "security_group_id" {
 }
 
 output "bastion_ip" {
-  value = var.key_name != "" ? aws_instance.bastion.public_ip : ""
+  value = var.key_name != "" ? aws_instance.bastion[0].public_ip : ""
 }
