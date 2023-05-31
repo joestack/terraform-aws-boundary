@@ -12,3 +12,7 @@ output "s3command" {
     data.aws_s3_bucket_objects.cloudinit.keys[0]
   )
 }
+
+output "bastion_ip" {
+  value = module.controllers.bastion_ip
+}

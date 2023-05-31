@@ -22,3 +22,7 @@ output "security_group_id" {
   description = "The ID of the controller security group"
   value       = aws_security_group.controller.id
 }
+
+output "bastion_ip" {
+  value = var.key_name != "" ? aws_instance.bastion.public_ip : ""
+}
