@@ -67,6 +67,7 @@ module "autoscaling" {
   }
 
   instance_type          = var.instance_type
+  #instance_name          = format("bdry-ctrl-0%s",) 
   key_name               = var.key_name
   max_size               = var.max_size
   min_size               = var.min_size

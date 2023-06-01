@@ -140,7 +140,7 @@ module "alb" {
   security_groups    = [aws_security_group.alb.id]
   subnets            = var.public_subnets
   tags               = var.tags
-
+  
   target_groups = [
     {
       name             = "boundary"
@@ -185,7 +185,8 @@ module "controllers" {
   source = "../boundary"
 
   after_start = [
-    "grep 'Initial auth information' /var/log/cloud-init-output.log && aws s3 cp /var/log/cloud-init-output.log s3://${var.bucket_name}/{{v1.local_hostname}}/cloud-init-output.log || true"
+    #"grep 'Initial auth information' /var/log/cloud-init-output.log && aws s3 cp /var/log/cloud-init-output.log s3://${var.bucket_name}/{{v1.local_hostname}}/cloud-init-output.log || true"
+    "grep 'Initial auth information' /var/log/cloud-init-output.log && cp /var/log/cloud-init-output.log ~/cloud-init-output.log || true"
   ]
 
   auto_scaling_group_name = "BoundaryController"

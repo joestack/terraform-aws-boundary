@@ -1,0 +1,8 @@
+S3 Logs into local file aka initil user credentials or token 
+
+recovery key into awskms for initial authentication (provider)
+
+TLS encryption
+
+DNS records
+

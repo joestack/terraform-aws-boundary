@@ -110,6 +110,7 @@ module "vpc" {
   cidr               = var.cidr_block
   create_vpc         = var.vpc_id != "" ? false : true
   enable_nat_gateway = true
+  enable_dns_hostnames = true
   name               = "boundary"
 
   private_subnets = [
@@ -126,3 +127,13 @@ module "vpc" {
 
   tags = local.tags
 }
+
+# data "aws_route53_zone" "selected" {
+#   name         = "${var.dns_domain}."
+#   private_zone = false
+# }
+
+# resource "aws_route53_record" "alb" {
+#   zone_id = data.aws_route53_zone.selected.zone_id
+#   name = ""
+# }

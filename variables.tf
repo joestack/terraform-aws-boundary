@@ -93,3 +93,7 @@ variable "worker_min_size" {
   description = "The minimum size of the worker group"
   type        = number
 }
+
+variable "dns_domain" {
+  default = "joern-stack.aws.sbx.hashicorpdemo.com"
+}
