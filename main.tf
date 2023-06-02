@@ -128,12 +128,14 @@ module "vpc" {
   tags = local.tags
 }
 
-# data "aws_route53_zone" "selected" {
-#   name         = "${var.dns_domain}."
-#   private_zone = false
-# }
+data "aws_route53_zone" "selected" {
+  name         = "${var.dns_domain}."
+  private_zone = false
+}
 
-# resource "aws_route53_record" "alb" {
-#   zone_id = data.aws_route53_zone.selected.zone_id
-#   name = ""
-# }
+resource "aws_route53_record" "alb" {
+  zone_id = data.aws_route53_zone.selected.zone_id
+  name = "bndry"
+  type = "CNAME"
+  records = [module.controllers.dns_name]
+}

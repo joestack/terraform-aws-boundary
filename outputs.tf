@@ -21,3 +21,7 @@ output "bastion_ip" {
 output "controller_ips" {
   value = module.controllers.ip_addresses
 }
+
+output "dns_name_set" {
+  value = aws_route53_record.alb.fqdn
+}
