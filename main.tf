@@ -137,5 +137,6 @@ resource "aws_route53_record" "alb" {
   zone_id = data.aws_route53_zone.selected.zone_id
   name = "bndry"
   type = "CNAME"
+  ttl = 300
   records = [module.controllers.dns_name]
 }
